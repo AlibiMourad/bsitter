@@ -24,20 +24,17 @@ import lombok.Data;
  */
 @Entity
 @Data
-public class Parent extends User{
+public class Parent extends Person{
     
     
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY,
                 cascade = CascadeType.ALL)
     private List<Person> listChildren;
 
-    public Parent(List<Person> listChildren, Auth auth, String Email, List<String> Telephones, Adress adress, Long id, String firstName, String lastName, Date DateNaissance, Genre genre, Parent parent) {
-        super(auth, Email, Telephones, adress, id, firstName, lastName, DateNaissance, genre, parent);
+    public Parent(List<Person> listChildren, Long id, String firstName, String lastName, Date DateNaissance, Genre genre, Parent parent) {
+        super(id, firstName, lastName, DateNaissance, genre, parent);
         this.listChildren = listChildren;
     }
 
- 
-
-  
-
+    
 }

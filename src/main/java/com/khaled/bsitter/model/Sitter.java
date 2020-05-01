@@ -24,7 +24,7 @@ import lombok.Data;
  */
 @Entity
 @Data
-public class Sitter extends User{
+public class Sitter extends Person{
     
     @ElementCollection
     private List<Days> openedDay;
@@ -32,13 +32,12 @@ public class Sitter extends User{
     private Map<Integer,String> NoteReviewCommantair;
     private double tarifPerDay;
 
-    public Sitter(List<Days> openedDay, Map<Integer, String> NoteReviewCommantair, double tarifPerDay, Auth auth, String Email, List<String> Telephones, Adress adress, Long id, String firstName, String lastName, Date DateNaissance, Genre genre, Parent parent) {
-        super(auth, Email, Telephones, adress, id, firstName, lastName, DateNaissance, genre, parent);
+    public Sitter(List<Days> openedDay, Map<Integer, String> NoteReviewCommantair, double tarifPerDay, Long id, String firstName, String lastName, Date DateNaissance, Genre genre, Parent parent) {
+        super(id, firstName, lastName, DateNaissance, genre, parent);
         this.openedDay = openedDay;
         this.NoteReviewCommantair = NoteReviewCommantair;
         this.tarifPerDay = tarifPerDay;
     }
 
- 
-
+   
 }

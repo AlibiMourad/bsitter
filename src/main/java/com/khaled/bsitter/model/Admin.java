@@ -17,11 +17,12 @@ import lombok.Data;
  */
 @Entity
 @Data
-public class Admin  extends User{
+public class Admin  extends Person{
 
-    public Admin(Auth auth, String Email, List<String> Telephones, Adress adress, Long id, String firstName, String lastName, Date DateNaissance, Genre genre, Parent parent) {
-        super(auth, Email, Telephones, adress, id, firstName, lastName, DateNaissance, genre, parent);
+    public Admin(Long id, String firstName, String lastName, Date DateNaissance, Genre genre, Parent parent) {
+        super(id, firstName, lastName, DateNaissance, genre, parent);
     }
 
+  
  
 }

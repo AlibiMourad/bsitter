@@ -118,10 +118,10 @@ EntityManagerFactory emf =Persistence.createEntityManagerFactory("com.khaled.bab
  EntityManager em = emf.createEntityManager();
  Long i =Long.parseLong(idcll.getText().toString());
         Adress p = em.find(Adress.class, i);
-         System.out.println(""+p.getPays().getPays());
-         pay.setText(""+p.getPays().getPays());
-         pa.setText(""+p.getVille());
-         code.setText(""+p.getPostal());
+//         System.out.println(""+p.getPays().getPays());
+//         pay.setText(""+p.getPays().getPays());
+//         pa.setText(""+p.getVille());
+//         code.setText(""+p.getPostal());
 //        em.getTransaction().begin();
 //        em.getTransaction().commit();
         em.close();

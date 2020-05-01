@@ -29,10 +29,12 @@ public class HistoryLog {
     private Date dateLog;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Auth auth;
-    
-    public HistoryLog(boolean seccusLogin, Date dateLog) {
+
+    public HistoryLog(Long id, boolean seccusLogin, Date dateLog, Auth auth) {
+        this.id = id;
         this.seccusLogin = seccusLogin;
         this.dateLog = dateLog;
+        this.auth = auth;
     }
 
 }

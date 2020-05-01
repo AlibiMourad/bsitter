@@ -19,8 +19,8 @@ import lombok.Data;
  *
  * @author alibi
  */
-//@Entity
-//@Data
+@Entity
+@Data
 public class Person {
 
     @Id
@@ -32,11 +32,14 @@ public class Person {
     private Genre genre;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Parent parent;
-    public Person(String firstName, String lastName, Date DateNaissance, Genre genre) {
+
+    public Person(Long id, String firstName, String lastName, Date DateNaissance, Genre genre, Parent parent) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.DateNaissance = DateNaissance;
         this.genre = genre;
+        this.parent = parent;
     }
      
 }

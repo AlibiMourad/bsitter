@@ -10,12 +10,12 @@ import com.khaled.bsitter.model.enums.Genre;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import lombok.Data;
 
@@ -25,29 +25,24 @@ import lombok.Data;
  */
 @Entity
 @Data
-public class User extends Person implements Serializable{
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;    
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private Auth auth;
+public class User extends Person{
+       
+    @OneToOne(cascade = CascadeType.ALL)
+    private Auth auth;
     private String Email;
     @ElementCollection
     private List<String> Telephones;
-    @OneToOne
-    @MapsId
+    @OneToOne(cascade = CascadeType.ALL)
     private Adress adress;
 
-    public User(Long id, /*Auth auth,*/ String Email, List<String> Telephones, 
-            /*Adress adress,*/ String firstName, String lastName, Date DateNaissance, Genre genre) {
-        super(firstName, lastName, DateNaissance, genre);
-        this.id = id;
-        //this.auth = auth;
+    public User(Auth auth, String Email, List<String> Telephones, Adress adress, Long id, String firstName, String lastName, Date DateNaissance, Genre genre, Parent parent) {
+        super(id, firstName, lastName, DateNaissance, genre, parent);
+        this.auth = auth;
         this.Email = Email;
         this.Telephones = Telephones;
-       // this.adress = adress;
+        this.adress = adress;
     }
+
 
    
 }

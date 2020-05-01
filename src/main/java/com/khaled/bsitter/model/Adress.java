@@ -11,7 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import lombok.Data;
 
@@ -29,15 +28,15 @@ public class Adress {
     private Pays pays;
     private String Ville;
     private String postal;
-    @OneToOne
-    @MapsId
+    @OneToOne(mappedBy = "adress")
     private User user;
-    
-    public Adress() {
-    }
-    public Adress(Pays pays, String Ville, String postal) {
+
+    public Adress(Long id, Pays pays, String Ville, String postal, User user) {
+        this.id = id;
         this.pays = pays;
         this.Ville = Ville;
         this.postal = postal;
+        this.user = user;
     }
+    
 }

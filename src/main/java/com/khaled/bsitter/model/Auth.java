@@ -39,12 +39,13 @@ public class Auth {
     private User user;
     private int active;
 
-    public Auth(String userName, String password, Date dateCreation, 
-        List<HistoryLog> hisLog, int active) {
+    public Auth(Long id, String userName, String password, Date dateCreation, List<HistoryLog> hisLog, User user, int active) {
+        this.id = id;
         this.userName = userName;
         this.password = password;
         this.dateCreation = dateCreation;
         this.hisLog = hisLog;
+        this.user = user;
         this.active = active;
     }
 

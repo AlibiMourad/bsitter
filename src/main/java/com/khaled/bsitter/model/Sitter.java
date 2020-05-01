@@ -10,6 +10,7 @@ import com.khaled.bsitter.model.enums.Genre;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,21 +22,23 @@ import lombok.Data;
  *
  * @author alibi
  */
-//@Entity
-//@Data
+@Entity
+@Data
 public class Sitter extends User{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    
+    @ElementCollection
     private List<Days> openedDay;
+    @ElementCollection
     private Map<Integer,String> NoteReviewCommantair;
     private double tarifPerDay;
 
-    public Sitter(List<Days> openedDay, Map<Integer, String> NoteReviewCommantair, double tarifPerDay, Long id, Auth auth, String Email, List<String> Telephones, Adress adress, String firstName, String lastName, Date DateNaissance, Genre genre) {
-        super(id, auth, Email, Telephones, adress, firstName, lastName, DateNaissance, genre);
+    public Sitter(List<Days> openedDay, Map<Integer, String> NoteReviewCommantair, double tarifPerDay, Auth auth, String Email, List<String> Telephones, Adress adress, Long id, String firstName, String lastName, Date DateNaissance, Genre genre, Parent parent) {
+        super(auth, Email, Telephones, adress, id, firstName, lastName, DateNaissance, genre, parent);
         this.openedDay = openedDay;
         this.NoteReviewCommantair = NoteReviewCommantair;
         this.tarifPerDay = tarifPerDay;
     }
+
+ 
 
 }

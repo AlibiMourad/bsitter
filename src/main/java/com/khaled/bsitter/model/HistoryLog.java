@@ -8,11 +8,11 @@ package com.khaled.bsitter.model;
 
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.Data;
 
 /**
@@ -21,20 +21,12 @@ import lombok.Data;
  */
 @Entity
 @Data
-public class HistoryLog {
+public class HistoryLog  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private boolean seccusLogin;
+    
+    @Temporal(TemporalType.DATE)
     private Date dateLog;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    private Auth auth;
-
-    public HistoryLog(Long id, boolean seccusLogin, Date dateLog, Auth auth) {
-        this.id = id;
-        this.seccusLogin = seccusLogin;
-        this.dateLog = dateLog;
-        this.auth = auth;
-    }
-
 }

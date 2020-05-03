@@ -6,38 +6,31 @@
 package com.khaled.bsitter.model;
 
 import com.khaled.bsitter.model.enums.Days;
-import com.khaled.bsitter.model.enums.Genre;
-import java.util.Date;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import lombok.Data;
 
-
-/**
- *
- * @author alibi
- */
 @Entity
 @Data
-public class Sitter extends Person{
+public class Sitter implements Serializable{
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Users users;
     @ElementCollection
     private List<Days> openedDay;
     @ElementCollection
-    private Map<Integer,String> NoteReviewCommantair;
+    private Map<Integer,String> noteReviewCommantair;
     private double tarifPerDay;
-
-    public Sitter(List<Days> openedDay, Map<Integer, String> NoteReviewCommantair, double tarifPerDay, Long id, String firstName, String lastName, Date DateNaissance, Genre genre, Parent parent) {
-        super(id, firstName, lastName, DateNaissance, genre, parent);
-        this.openedDay = openedDay;
-        this.NoteReviewCommantair = NoteReviewCommantair;
-        this.tarifPerDay = tarifPerDay;
-    }
-
    
 }

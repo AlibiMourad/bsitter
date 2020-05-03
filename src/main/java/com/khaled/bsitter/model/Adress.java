@@ -11,12 +11,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import lombok.Data;
+
 
 /**
  *
- * @author alibi
+ * @author alibi 
  */
 @Entity
 @Data
@@ -26,17 +26,8 @@ public class Adress {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Pays pays;
-    private String Ville;
+    private String ville;
     private String postal;
-    @OneToOne(mappedBy = "adress")
-    private User user;
 
-    public Adress(Long id, Pays pays, String Ville, String postal, User user) {
-        this.id = id;
-        this.pays = pays;
-        this.Ville = Ville;
-        this.postal = postal;
-        this.user = user;
-    }
     
 }

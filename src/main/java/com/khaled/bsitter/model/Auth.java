@@ -6,17 +6,19 @@
 
 package com.khaled.bsitter.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.Data;
+
 
 /**
  *
@@ -31,23 +33,14 @@ public class Auth {
     private Long id;
     private String userName;
     private String password;
+    @Temporal(TemporalType.DATE)
     private Date dateCreation;
-    @OneToMany(mappedBy = "auth", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    private List<HistoryLog> hisLog;
-    @OneToOne(cascade = CascadeType.ALL)
-    private User user;
+    @OneToMany(
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<HistoryLog> hisLog  = new ArrayList<>();
     private int active;
-
-    public Auth(Long id, String userName, String password, Date dateCreation, List<HistoryLog> hisLog, User user, int active) {
-        this.id = id;
-        this.userName = userName;
-        this.password = password;
-        this.dateCreation = dateCreation;
-        this.hisLog = hisLog;
-        this.user = user;
-        this.active = active;
-    }
 
     }
 

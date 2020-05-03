@@ -3,43 +3,44 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.khaled.bsitter.model;
 
 import com.khaled.bsitter.model.enums.Genre;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.Data;
 
-/**
- *
- * @author alibi
- */
 @Entity
 @Data
-public class Person {
-
+public class Users{
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Auth auth; 
     private String firstName;
     private String lastName;
+    @Temporal(TemporalType.DATE)
     private Date DateNaissance;
     private Genre genre;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    private Parent parent;
-
-    public Person(Long id, String firstName, String lastName, Date DateNaissance, Genre genre, Parent parent) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.DateNaissance = DateNaissance;
-        this.genre = genre;
-        this.parent = parent;
-    }
-     
+    private String email;
+    @ElementCollection
+    private List<String> Telephones  = new ArrayList<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    private Adress adress;
 }

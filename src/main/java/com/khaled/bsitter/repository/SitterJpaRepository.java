@@ -5,10 +5,10 @@
  */
 package com.khaled.bsitter.repository;
 
-import com.khaled.bsitter.model.Sitter;
+import com.khaled.bsitter.dto.SitterDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface SitterRepo  extends JpaRepository<Sitter, Long> {
-    
+public interface SitterJpaRepository  extends JpaRepository<SitterDTO, Long> {
+    SitterDTO findByNcin(String ncin);
 }

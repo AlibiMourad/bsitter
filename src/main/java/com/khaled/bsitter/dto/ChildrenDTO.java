@@ -3,31 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package com.khaled.bsitter.dto;
 
-package com.khaled.bsitter.model;
-
-import com.khaled.bsitter.model.enums.Pays;
+import com.khaled.bsitter.dto.enums.Genre;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import lombok.Data;
 
-
-/**
- *
- * @author alibi 
- */
-@Entity
+@Entity(name = "Children")
+@Table(name = "Children")
 @Data
-public class Adress {
-    
+public class ChildrenDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Pays pays;
-    private String ville;
-    private String postal;
-
+    private Long id; 
     
+    private String firstName;
+    private String lastName;
+    private Date DateNaissance;
+    private Genre genre;
 }

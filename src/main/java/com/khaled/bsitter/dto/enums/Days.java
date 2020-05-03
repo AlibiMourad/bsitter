@@ -5,7 +5,7 @@
  choose Tools | Templates
  * and open the template in the editor.
  */
-package com.khaled.bsitter.model.enums;
+package com.khaled.bsitter.dto.enums;
 
 /**
  *

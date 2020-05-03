@@ -3,44 +3,39 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package com.khaled.bsitter.dto;
 
-package com.khaled.bsitter.model;
-
-import com.khaled.bsitter.model.enums.Genre;
+import com.khaled.bsitter.dto.enums.Days;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.Table;
 import lombok.Data;
 
-@Entity
+@Entity(name = "Sitter")
+@Table(name = "Sitter")
 @Data
-public class Users{
-    
+public class SitterDTO implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne(cascade = CascadeType.ALL)
-    private Auth auth; 
-    private String firstName;
-    private String lastName;
-    @Temporal(TemporalType.DATE)
-    private Date DateNaissance;
-    private Genre genre;
-    private String email;
+    private UsersDTO users;
     @ElementCollection
-    private List<String> Telephones  = new ArrayList<>();
+    private List<Days> openedDay;
+    @ElementCollection
+    private Map<Integer, String> noteReviewCommantair;
+    private double tarifPerDay;
+    private String ncin;
+
     @OneToOne(cascade = CascadeType.ALL)
-    private Adress adress;
+    private ParentsDTO parents;
 }

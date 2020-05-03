@@ -4,29 +4,32 @@
  * and open the template in the editor.
  */
 
-package com.khaled.bsitter.model;
+package com.khaled.bsitter.dto;
 
-import java.util.Date;
+import com.khaled.bsitter.dto.enums.Pays;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.Table;
 import lombok.Data;
+
 
 /**
  *
- * @author alibi
+ * @author alibi 
  */
-@Entity
+@Entity(name = "Adress")
+@Table(name = "Adress")
 @Data
-public class HistoryLog  {
+public class AdressDTO {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private boolean seccusLogin;
+    private Pays pays;
+    private String ville;
+    private String postal;
+
     
-    @Temporal(TemporalType.DATE)
-    private Date dateLog;
 }

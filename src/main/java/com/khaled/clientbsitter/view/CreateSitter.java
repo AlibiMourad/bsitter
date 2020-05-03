@@ -5,6 +5,7 @@
  */
 package com.khaled.clientbsitter.view;
 
+import com.khaled.clientbsitter.controlle.SitterControlle;
 import com.khaled.clientbsitter.model.Adress;
 import com.khaled.clientbsitter.model.Auth;
 import com.khaled.clientbsitter.model.Sitter;
@@ -413,7 +414,8 @@ public class CreateSitter extends javax.swing.JFrame {
         sitter.setOpenedDay(openedDay);
         sitter.setTarifPerDay(Double.parseDouble(jTarif.getText()));
         sitter.setNcin(jCin.getText());
-        
+        SitterControlle s= new SitterControlle();
+        s.CreateNewSitter(sitter);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -16,6 +16,8 @@ import com.khaled.clientbsitter.model.enums.Pays;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -139,7 +141,7 @@ public class CreateSitter extends javax.swing.JFrame {
 
         jPasswordField2.setInputVerifier(new  SamePasswdVerifier(this.jPasswordField1));
 
-        jGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Homme", "Femme" }));
+        jGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MHomme", "Femme" }));
         jGenre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jGenreActionPerformed(evt);
@@ -384,7 +386,8 @@ public class CreateSitter extends javax.swing.JFrame {
         users.setFirstName(jFirstName.getText());
         users.setLastName(jLastName.getText());
         users.setDateNaissance(jDateNaissance.getDate());
-        users.setGenre(jGenre.getSelectedItem().toString());
+        users.setGenre(""+jGenre.getSelectedItem().toString().charAt(0));
+
         users.setEmail(jEmail.getText());
         
         List<String> telephones = new ArrayList<>();
@@ -402,20 +405,24 @@ public class CreateSitter extends javax.swing.JFrame {
         Sitter sitter = new Sitter();
         sitter.setUsers(users);
         
-        List<String> openedDay = new ArrayList<>();
-        openedDay.add(jL.getText());
-        openedDay.add(jMa.getText());
-        openedDay.add(jMe.getText());
-        openedDay.add(jJ.getText());
-        openedDay.add(jV.getText());
-        openedDay.add(jS.getText());
-        openedDay.add(jD.getText());
+        List<Days> openedDay = new ArrayList<>();
+        if(jL.isSelected())openedDay.add(Days.MONDAY);
+        if(jMa.isSelected())openedDay.add(Days.TUESDAY);
+        if(jMe.isSelected())openedDay.add(Days.WEDNESDAY);
+        if(jJ.isSelected())openedDay.add(Days.THURSDAY);
+        if(jV.isSelected())openedDay.add(Days.FRIDAY);
+        if(jS.isSelected())openedDay.add(Days.SATURDAY);
+        if(jD.isSelected())openedDay.add(Days.SUNDAY);
         
         sitter.setOpenedDay(openedDay);
         sitter.setTarifPerDay(Double.parseDouble(jTarif.getText()));
         sitter.setNcin(jCin.getText());
         SitterControlle s= new SitterControlle();
-        s.CreateNewSitter(sitter);
+        try {
+            s.CreateNewSitter(sitter);
+        } catch (Exception ex) {
+            Logger.getLogger(CreateSitter.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

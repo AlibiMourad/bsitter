@@ -23,12 +23,13 @@ class EmailVerifier extends InputVerifier {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(pass);
 
-        if (matcher.matches()) {
-            tf.setBackground(Color.white);
-            return true;
-        }
-        tf.setBackground(Color.red);
-        return false;
+//        if (matcher.matches()) {
+//            tf.setBackground(Color.white);
+//            return true;
+//        }
+//        tf.setBackground(Color.red);
+//        return false;
+        return true;
 
     }
 }
@@ -39,12 +40,14 @@ class EmptyVerifier extends InputVerifier {
         JTextField tf = (JTextField) input;
         String pass = tf.getText();
 
-        if (!pass.isEmpty()) {
-            tf.setBackground(Color.white);
-            return true;
-        }
-        tf.setBackground(Color.red);
-        return false;
+//        if (!pass.isEmpty()) {
+//            tf.setBackground(Color.white);
+//            return true;
+//        }
+//        tf.setBackground(Color.red);
+//        return false;
+        return true;
+
     }
 }
 
@@ -60,12 +63,14 @@ class SamePasswdVerifier extends InputVerifier {
         JTextField tf = (JTextField) input;
         String pass = tf.getText();
 
-        if (pass.equals(this.jPasswordField1.getText())) {
-            tf.setBackground(Color.white);
-            return true;
-        }
-        tf.setBackground(Color.red);
-        return false;
+//        if (pass.equals(this.jPasswordField1.getText())) {
+//            tf.setBackground(Color.white);
+//            return true;
+//        }
+//        tf.setBackground(Color.red);
+//        return false;
+        return true;
+
     }
 }
 
@@ -75,17 +80,17 @@ class DegitVerifier8 extends InputVerifier {
         JTextField tf = (JTextField) input;
         String pass = tf.getText();
 
-        if (pass.isEmpty() || pass.length() != 8) {
-            tf.setBackground(Color.red);
-            return false;
-        }
-        try {
-            int d = Integer.parseInt(pass);
-        } catch (NumberFormatException nfe) {
-            tf.setBackground(Color.red);
-            return false;
-        }
-        tf.setBackground(Color.white);
+//        if (pass.isEmpty() || pass.length() != 8) {
+//            tf.setBackground(Color.red);
+//            return false;
+//        }
+//        try {
+//            int d = Integer.parseInt(pass);
+//        } catch (NumberFormatException nfe) {
+//            tf.setBackground(Color.red);
+//            return false;
+//        }
+//        tf.setBackground(Color.white);
         return true;
 
     }
@@ -97,17 +102,17 @@ class DegitVerifier extends InputVerifier {
         JTextField tf = (JTextField) input;
         String pass = tf.getText();
 
-        if (pass.isEmpty()) {
-            tf.setBackground(Color.red);
-            return false;
-        }
-        try {
-            int d = Integer.parseInt(pass);
-        } catch (NumberFormatException nfe) {
-            tf.setBackground(Color.red);
-            return false;
-        }
-        tf.setBackground(Color.white);
+//        if (pass.isEmpty()) {
+//            tf.setBackground(Color.red);
+//            return false;
+//        }
+//        try {
+//            int d = Integer.parseInt(pass);
+//        } catch (NumberFormatException nfe) {
+//            tf.setBackground(Color.red);
+//            return false;
+//        }
+//        tf.setBackground(Color.white);
         return true;
 
     }

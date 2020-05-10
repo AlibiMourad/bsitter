@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.khaled.clientbsitter.controlle;
+
 import java.io.IOException;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -18,15 +19,15 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
-
 /**
  *
  * @author xfrag
  */
 class HttpClient {
-     private final CloseableHttpClient httpClient = HttpClients.createDefault();
-    
-     public void sendGet() throws Exception {
+
+    private final CloseableHttpClient httpClient = HttpClients.createDefault();
+
+    public void sendGet() throws Exception {
 
         HttpGet request = new HttpGet("http://127.0.0.1:8080/api/user/");
 
@@ -53,16 +54,15 @@ class HttpClient {
 
     }
 
-
-     public void close() throws IOException {
+    public void close() throws IOException {
         httpClient.close();
     }
 
-     void sendPost(HttpPost request) throws Exception {
+    void sendPost(HttpPost request) throws Exception {
 
-       
-        try (CloseableHttpClient httpClient = HttpClients.createDefault();
-             CloseableHttpResponse response = httpClient.execute(request)) {
+        try (
+                CloseableHttpClient httpClient = HttpClients.createDefault();
+                CloseableHttpResponse response = httpClient.execute(request)) {
 
             System.out.println(EntityUtils.toString(response.getEntity()));
         }

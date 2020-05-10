@@ -16,23 +16,24 @@ package com.khaled.clientbsitter.controlle;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.khaled.clientbsitter.model.Parents;
 import com.khaled.clientbsitter.model.Sitter;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 
 
-public class SitterControlle {
+public class ParentsControlle {
 
-    public String CreateNewSitter(Sitter sitter) throws JsonProcessingException, Exception {
+    public String CreateNewParents(Parents parents) throws JsonProcessingException, Exception {
         HttpClient obj = new HttpClient();
         try {
             System.out.println("Send Http POST request");
             ObjectMapper mapper = new ObjectMapper();
             // Converting the Object to JSONString
-            String jsonString = mapper.writeValueAsString(sitter);
+            String jsonString = mapper.writeValueAsString(parents);
             
-            HttpPost request = new HttpPost("http://127.0.0.1:8080/api/sitter/");
+            HttpPost request = new HttpPost("http://127.0.0.1:8080/api/parents//");
             request.addHeader("content-type", "application/json");
             request.addHeader("Accept", "application/json");
 

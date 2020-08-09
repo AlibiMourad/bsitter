@@ -10,7 +10,7 @@ package com.khaled.bsitter.dto.enums;
  * @author alibi
  */
 public enum Genre {
-    M("Homme"),
+    H("Homme"),
     F("femme");
     
     private String genre;

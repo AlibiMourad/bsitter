@@ -157,7 +157,7 @@ public class UpdateSitter extends javax.swing.JFrame {
         jDateNaissance.setToolTipText("05-01-2001");
         jDateNaissance.setInputVerifier(new EmptyVerifier());
 
-        jGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MHomme", "Femme" }));
+        jGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Homme", "Femme" }));
         jGenre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jGenreActionPerformed(evt);

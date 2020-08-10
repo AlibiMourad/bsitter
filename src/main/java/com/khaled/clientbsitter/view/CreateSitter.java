@@ -86,6 +86,7 @@ public class CreateSitter extends javax.swing.JFrame {
         jCin = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -233,6 +234,13 @@ public class CreateSitter extends javax.swing.JFrame {
 
         jLabel19.setText("********* Create   Sitter");
 
+        jButton2.setText("Quiter");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -306,7 +314,10 @@ public class CreateSitter extends javax.swing.JFrame {
                                         .addComponent(jS, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jD))
-                                    .addComponent(jButton1))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButton2)))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -321,7 +332,9 @@ public class CreateSitter extends javax.swing.JFrame {
                 .addComponent(jLabel19)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1)
+                        .addComponent(jButton2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -483,6 +496,9 @@ public class CreateSitter extends javax.swing.JFrame {
         SitterControlle s= new SitterControlle();
         try {
             s.CreateNewSitter(sitter);
+            this.dispose();
+        Acceil acceil = new Acceil();
+        acceil.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(CreateSitter.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -503,6 +519,12 @@ public class CreateSitter extends javax.swing.JFrame {
     private void jPostalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPostalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPostalActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       this.dispose();
+        Acceil acceil = new Acceil();
+        acceil.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -544,6 +566,7 @@ public class CreateSitter extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField jAddress;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JTextField jCin;
     private javax.swing.JCheckBox jD;
     private com.toedter.calendar.JDateChooser jDateNaissance;

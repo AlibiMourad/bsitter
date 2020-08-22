@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class Auth {
 
-    @JsonIgnore
+//    @JsonIgnore
     private Long id;
     private String userName;
     private String password;

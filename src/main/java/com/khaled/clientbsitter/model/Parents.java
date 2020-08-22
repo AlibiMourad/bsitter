@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class Parents {
 
-    @JsonIgnore
+//    @JsonIgnore
     private Long id;
     private String ncin;
 

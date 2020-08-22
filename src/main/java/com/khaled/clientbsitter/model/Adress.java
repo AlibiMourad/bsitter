@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class Adress {
 
-    @JsonIgnore
+//    @JsonIgnore
     private Long id;
     private Pays pays;
     private String ville;

@@ -13,6 +13,8 @@ import com.khaled.clientbsitter.model.Users;
 import com.khaled.clientbsitter.model.enums.Days;
 import com.khaled.clientbsitter.model.enums.Genre;
 import com.khaled.clientbsitter.model.enums.Pays;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,11 +27,48 @@ import java.util.logging.Logger;
  */
 public class UpdateSitter extends javax.swing.JFrame {
 
+    Sitter sitter;
+
     /**
      * Creates new form createSitter
      */
-    public UpdateSitter() {
+//    public UpdateSitter() {
+//        initComponents();
+//    }
+    public UpdateSitter(Sitter sitter) {
         initComponents();
+        setSitter(sitter);
+        String pattern = "dd/MM/yyyy";
+        DateFormat df = new SimpleDateFormat(pattern);
+        this.jUserName.setText(sitter.getUsers().getAuth().getUserName());
+        this.jPasswordField1.setText(sitter.getUsers().getAuth().getPassword());
+        this.jPasswordField2.setText(sitter.getUsers().getAuth().getPassword());
+        this.jFirstName.setText(sitter.getUsers().getFirstName());
+        this.jLastName.setText(sitter.getUsers().getLastName());
+        this.jDateNaissance.setDate(sitter.getUsers().getDateNaissance());
+        this.jGenre.setSelectedIndex((sitter.getUsers().getGenre().equals("H")) ? 0 : 1);
+        this.jEmail.setText(sitter.getUsers().getEmail());
+        this.jPhone1.setText(sitter.getUsers().getTelephones().get(0));
+        this.jPhone2.setText(sitter.getUsers().getTelephones().get(1));
+        this.jPhone3.setText(sitter.getUsers().getTelephones().get(2));
+        this.jVille.setText(sitter.getUsers().getAdress().getVille());
+        this.jPays.setSelectedIndex(sitter.getUsers().getAdress().getPays().ordinal());
+        this.jPostal.setText(sitter.getUsers().getAdress().getPostal());
+        this.jL.setSelected(sitter.getOpenedDay().contains(Days.MONDAY));
+        this.jMa.setSelected(sitter.getOpenedDay().contains(Days.TUESDAY));
+        this.jMe.setSelected(sitter.getOpenedDay().contains(Days.WEDNESDAY));
+        this.jJ.setSelected(sitter.getOpenedDay().contains(Days.THURSDAY));
+        this.jV.setSelected(sitter.getOpenedDay().contains(Days.FRIDAY));
+        this.jS.setSelected(sitter.getOpenedDay().contains(Days.SATURDAY));
+        this.jD.setSelected(sitter.getOpenedDay().contains(Days.SATURDAY));
+        this.jTarif.setText(""+sitter.getTarifPerDay());
+        this.jCin.setText(sitter.getNcin());
+        
+    }
+
+    public void setSitter(Sitter sitter) {
+        this.sitter = sitter;
+
     }
 
     /**
@@ -85,6 +124,8 @@ public class UpdateSitter extends javax.swing.JFrame {
         jTarif = new javax.swing.JTextField();
         jCin = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -230,6 +271,15 @@ public class UpdateSitter extends javax.swing.JFrame {
             }
         });
 
+        jLabel19.setText("Update Sitter");
+
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -303,16 +353,27 @@ public class UpdateSitter extends javax.swing.JFrame {
                                         .addComponent(jS, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jD))
-                                    .addComponent(jButton1))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(82, 82, 82)
+                                        .addComponent(jButton2)))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(141, 141, 141)
+                .addComponent(jLabel19)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addContainerGap()
+                .addComponent(jLabel19)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1)
+                        .addComponent(jButton2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -440,40 +501,58 @@ public class UpdateSitter extends javax.swing.JFrame {
         users.setFirstName(jFirstName.getText());
         users.setLastName(jLastName.getText());
         users.setDateNaissance(jDateNaissance.getDate());
-        users.setGenre(""+jGenre.getSelectedItem().toString().charAt(0));
+        users.setGenre("" + jGenre.getSelectedItem().toString().charAt(0));
 
         users.setEmail(jEmail.getText());
-        
+
         List<String> telephones = new ArrayList<>();
         telephones.add(jPhone1.getText());
         telephones.add(jPhone2.getText());
         telephones.add(jPhone3.getText());
         users.setTelephones(telephones);
-        
-        Adress adress =  new Adress();
+
+        Adress adress = new Adress();
         adress.setPays(Pays.valueOf(jPays.getSelectedItem().toString()));
         adress.setPostal(jPostal.getText());
         adress.setVille(jVille.getText());
-        
+
         users.setAdress(adress);
         Sitter sitter = new Sitter();
         sitter.setUsers(users);
-        
+
         List<Days> openedDay = new ArrayList<>();
-        if(jL.isSelected())openedDay.add(Days.MONDAY);
-        if(jMa.isSelected())openedDay.add(Days.TUESDAY);
-        if(jMe.isSelected())openedDay.add(Days.WEDNESDAY);
-        if(jJ.isSelected())openedDay.add(Days.THURSDAY);
-        if(jV.isSelected())openedDay.add(Days.FRIDAY);
-        if(jS.isSelected())openedDay.add(Days.SATURDAY);
-        if(jD.isSelected())openedDay.add(Days.SUNDAY);
-        
+        if (jL.isSelected()) {
+            openedDay.add(Days.MONDAY);
+        }
+        if (jMa.isSelected()) {
+            openedDay.add(Days.TUESDAY);
+        }
+        if (jMe.isSelected()) {
+            openedDay.add(Days.WEDNESDAY);
+        }
+        if (jJ.isSelected()) {
+            openedDay.add(Days.THURSDAY);
+        }
+        if (jV.isSelected()) {
+            openedDay.add(Days.FRIDAY);
+        }
+        if (jS.isSelected()) {
+            openedDay.add(Days.SATURDAY);
+        }
+        if (jD.isSelected()) {
+            openedDay.add(Days.SUNDAY);
+        }
+
         sitter.setOpenedDay(openedDay);
         sitter.setTarifPerDay(Double.parseDouble(jTarif.getText()));
         sitter.setNcin(jCin.getText());
-        SitterControlle s= new SitterControlle();
+        SitterControlle s = new SitterControlle();
         try {
-            s.CreateNewSitter(sitter);
+            sitter.setId(this.sitter.getId());
+            s.updateSitter(sitter);
+            BabySitterList babySitterList = new  BabySitterList();
+            babySitterList.setVisible(true);
+            this.dispose();
         } catch (Exception ex) {
             Logger.getLogger(UpdateSitter.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -494,6 +573,12 @@ public class UpdateSitter extends javax.swing.JFrame {
     private void jPostalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPostalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPostalActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        BabySitterList babySitterList = new BabySitterList();
+        babySitterList.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -532,7 +617,7 @@ public class UpdateSitter extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UpdateSitter().setVisible(true);
+//                new UpdateSitter().setVisible(true);
             }
         });
 
@@ -541,6 +626,7 @@ public class UpdateSitter extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField jAddress;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JTextField jCin;
     private javax.swing.JCheckBox jD;
     private com.toedter.calendar.JDateChooser jDateNaissance;
@@ -559,6 +645,7 @@ public class UpdateSitter extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

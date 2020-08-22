@@ -30,7 +30,7 @@ public class CreateParent extends javax.swing.JFrame {
      */
     List<Children> listChildren = new ArrayList<>();
     Children children = new Children();
-        
+
     public CreateParent() {
         initComponents();
     }
@@ -786,18 +786,18 @@ public class CreateParent extends javax.swing.JFrame {
         adress.setVille(jVille.getText());
 
         users.setAdress(adress);
-        Parents parent = new  Parents();
+        Parents parent = new Parents();
         parent.setUsers(users);
 
         parent.setNcin(jCin.getText());
         parent.setListChildren(listChildren);
-        
+
         ParentsControlle p = new ParentsControlle();
         try {
             p.CreateNewParents(parent);
-        this.dispose();
-        Acceil acceil = new Acceil();
-        acceil.setVisible(true);
+            this.dispose();
+            Acceil acceil = new Acceil();
+            acceil.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(CreateParent.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -872,54 +872,54 @@ public class CreateParent extends javax.swing.JFrame {
     }//GEN-LAST:event_jChGenre6ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+
         if (!jChilName1.getText().isEmpty()) {
             children.setFirstName(jChilName1.getText());
             children.setLastName(jChilLastName1.getText());
             children.setDateNaissance(jChDateNaissance1.getDate());
-            children.setGenre(Genre.valueOf(""+jChGenre1.getSelectedItem().toString().charAt(0)));
+            children.setGenre(Genre.valueOf("" + jChGenre1.getSelectedItem().toString().charAt(0)));
             listChildren.add(children);
         }
         if (!jChilName2.getText().isEmpty()) {
             children.setFirstName(jChilName2.getText());
             children.setLastName(jChilLastName2.getText());
             children.setDateNaissance(jChDateNaissance2.getDate());
-            children.setGenre(Genre.valueOf(""+jChGenre2.getSelectedItem().toString().charAt(0)));
+            children.setGenre(Genre.valueOf("" + jChGenre2.getSelectedItem().toString().charAt(0)));
             listChildren.add(children);
         }
         if (!jChilName3.getText().isEmpty()) {
             children.setFirstName(jChilName3.getText());
             children.setLastName(jChilLastName3.getText());
             children.setDateNaissance(jChDateNaissance3.getDate());
-            children.setGenre(Genre.valueOf(""+jChGenre3.getSelectedItem().toString().charAt(0)));
+            children.setGenre(Genre.valueOf("" + jChGenre3.getSelectedItem().toString().charAt(0)));
             listChildren.add(children);
         }
         if (!jChilName4.getText().isEmpty()) {
             children.setFirstName(jChilName4.getText());
             children.setLastName(jChilLastName4.getText());
             children.setDateNaissance(jChDateNaissance4.getDate());
-            children.setGenre(Genre.valueOf(""+jChGenre4.getSelectedItem().toString().charAt(0)));
+            children.setGenre(Genre.valueOf("" + jChGenre4.getSelectedItem().toString().charAt(0)));
             listChildren.add(children);
         }
         if (!jChilName5.getText().isEmpty()) {
             children.setFirstName(jChilName5.getText());
             children.setLastName(jChilLastName5.getText());
             children.setDateNaissance(jChDateNaissance5.getDate());
-            children.setGenre(Genre.valueOf(""+jChGenre5.getSelectedItem().toString().charAt(0)));
+            children.setGenre(Genre.valueOf("" + jChGenre5.getSelectedItem().toString().charAt(0)));
             listChildren.add(children);
         }
         if (!jChilName6.getText().isEmpty()) {
             children.setFirstName(jChilName6.getText());
             children.setLastName(jChilLastName6.getText());
             children.setDateNaissance(jChDateNaissance6.getDate());
-            children.setGenre(Genre.valueOf(""+jChGenre6.getSelectedItem().toString().charAt(0)));
+            children.setGenre(Genre.valueOf("" + jChGenre6.getSelectedItem().toString().charAt(0)));
             listChildren.add(children);
         }
         jFrame1.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-                jFrame1.setVisible(false);
+        jFrame1.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jChilName4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChilName4ActionPerformed

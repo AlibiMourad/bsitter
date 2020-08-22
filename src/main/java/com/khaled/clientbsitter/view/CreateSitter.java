@@ -495,7 +495,7 @@ public class CreateSitter extends javax.swing.JFrame {
         sitter.setNcin(jCin.getText());
         SitterControlle s= new SitterControlle();
         try {
-            s.CreateNewSitter(sitter);
+            s.createNewSitter(sitter);
             this.dispose();
         Acceil acceil = new Acceil();
         acceil.setVisible(true);

@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class Users {
 
-    @JsonIgnore
+//    @JsonIgnore
     private Long id;
     private Auth auth;
     private String firstName;

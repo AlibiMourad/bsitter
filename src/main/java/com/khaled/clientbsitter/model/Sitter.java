@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class Sitter {
 
-    @JsonIgnore
+//    @JsonIgnore
     private Long id;
     private Users users;
     private List<Days> openedDay;

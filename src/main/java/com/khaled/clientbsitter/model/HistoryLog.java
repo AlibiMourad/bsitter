@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class HistoryLog {
 
-    @JsonIgnore
+//    @JsonIgnore
     private Long id;
     private boolean seccusLogin;
     private Date dateLog;

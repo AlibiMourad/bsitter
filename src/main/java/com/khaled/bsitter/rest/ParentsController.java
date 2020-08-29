@@ -76,7 +76,7 @@ public class ParentsController {
         }
         currentParents.get().setNcin(parents.getNcin());
         currentParents.get().setListChildren(parents.getListChildren());
-        currentParents.get().setSitter(parents.getSitter());
+        currentParents.get().setIdSitter(parents.getIdSitter());
 
         parentsJpaRepository.saveAndFlush(currentParents.get());
         return new ResponseEntity<ParentsDTO>(currentParents.get(), HttpStatus.OK);

@@ -22,15 +22,6 @@ public class AuthDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String userName;
-    private String password;
-    @Temporal(TemporalType.DATE)
-    private Date dateCreation;
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<HistoryLogDTO> hisLog = new ArrayList<>();
     private int active;
 
 }

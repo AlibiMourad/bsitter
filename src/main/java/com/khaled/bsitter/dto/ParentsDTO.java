@@ -28,7 +28,8 @@ public class ParentsDTO {
             orphanRemoval = true
     )
     private List<ChildrenDTO> listChildren = new ArrayList<>();
-    @OneToOne(cascade = CascadeType.ALL)
-    private SitterDTO sitter;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    private SitterDTO sitter;
+    private Long idSitter;
 
 }
